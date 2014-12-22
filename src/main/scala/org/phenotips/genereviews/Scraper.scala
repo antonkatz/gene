@@ -79,7 +79,7 @@ object Scraper extends App
 
   private def toSolrJson(map: Map[Int, String]): JsArray = {
     map.foldLeft(Json.arr())((json, mapEntry) => {
-      val entryJson = Json.obj("id" -> mapEntry._1, "gene_reviews_link" -> mapEntry._2)
+      val entryJson = Json.obj("id" -> mapEntry._1, "gene_reviews_link" -> Json.obj("set" -> mapEntry._2))
       json.append(entryJson)
     })
   }

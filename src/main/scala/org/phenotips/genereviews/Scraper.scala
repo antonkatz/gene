@@ -109,6 +109,7 @@ object Scraper extends App
   }
   private def modifySolrDocs(map: Map[Int, String]): Iterable[SolrDocument] =
   {
+    // fixme. flip the elements for proper modification statistics
     val existingDocs = map.map(row => loadSolrDocById(row._1) -> row._2)
     val modifiedDocs = existingDocs.map(row =>
       row._1.map(doc => {
